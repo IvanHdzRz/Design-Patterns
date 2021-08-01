@@ -4,19 +4,35 @@ import javax.swing.Timer;
 
 import java.util.*;
 public class WeatherData extends Subject{
-    private int temperature;
-    
+    private double temperature;
+    private double humidity;
+    private double pressure;
+
     public WeatherData(){
         //al construir la clase de manera inmedita iniciara un timer
-        //que actualizara el valor de la temepartura cada 5 segundos
+        //que actualizara el valor del clima cada 5 segundos
         Timer interval = new Timer(5000,e->{
-            temperature=(int)(Math.random()*5+35);
+            temperature=Math.random()*5+35;
+            pressure=Math.random()*2+1;
+            humidity=Math.random();
+
             updateObservers();
         });
         interval.start();
         this.observers= new ArrayList<Observer>();
     }
     
+    //getters for pulling data from the WeatherData
+    public double getTemperature(){
+        return temperature;
+    }
+    public double getHumidity(){
+        return humidity;
+    }
+    public double getPressure(){
+        return pressure;
+    }
+
     @Override
     public void addObserver(Observer observer) {
         this.observers.add(observer);
@@ -31,8 +47,9 @@ public class WeatherData extends Subject{
         List<Observer> observersToNotify =new ArrayList<Observer>(this.observers);
         
         observersToNotify
-            .forEach(observer->observer.update(temperature));
+            .forEach(observer->observer.update(this)); 
     }
+
     
     
 

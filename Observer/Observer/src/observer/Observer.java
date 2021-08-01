@@ -1,4 +1,7 @@
 package observer;
+
+import subject.Subject;
+
 public interface Observer {
-    void update(int temperature);
+    void update(Subject observable);
 }
