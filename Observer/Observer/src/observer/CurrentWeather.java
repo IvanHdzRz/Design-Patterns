@@ -10,6 +10,7 @@ public class CurrentWeather implements Observer{
 
     public CurrentWeather(Subject observable){
         this.observable = observable;
+        this.observable.addObserver(this);
     }
     
     public void update(Subject notifyingSubject){

@@ -9,6 +9,7 @@ public class WeatherStatidistic implements Observer{
     public WeatherStatidistic(Subject observable){
         this.historicTemps=new ArrayList<Double>();
         this.observable=observable;
+        this.observable.addObserver(this);
     }
     
     public void update(Subject notifyingSubject){

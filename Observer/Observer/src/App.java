@@ -12,8 +12,7 @@ public class App {
         Observer observadorDeTemperatura= new CurrentWeather(servicioDeClima);
         Observer estadisticas= new WeatherStatidistic(servicioDeClima);
         
-        servicioDeClima.addObserver(observadorDeTemperatura);
-        servicioDeClima.addObserver(estadisticas);
+        
         JOptionPane.showMessageDialog(null, "no cerrar");    
         
 
